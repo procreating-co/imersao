@@ -566,7 +566,7 @@ footer small {
      ================================================================ -->
 <script>
 var CONFIG = {
-  VIMEO_ID:          "https://vimeo.com/1186334647?share=copy&fl=sv&fe=ci",
+  VIMEO_ID:          "1186334647",
   KIWIFY_URL:        "https://pay.kiwify.com.br/OnTlY8O",
   CTA_DELAY_MINUTES: 10,
   STORAGE_KEY:       "imersao_sdu_v5"
@@ -599,12 +599,13 @@ var CONFIG = {
   <div class="vwrap">
     <div class="vaspect">
       <iframe
-        id="vplayer"
-        src=""
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen
-        title="Imersão Saúde das Unhas"
-      ></iframe>
+        id="vimeo-player"
+  src="https://player.vimeo.com/video/1186334647?title=0&byline=0&portrait=0"
+  width="100%"
+  height="480"
+  frameborder="0"
+  allow="autoplay; fullscreen; picture-in-picture"
+  allowfullscreen></iframe>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="pfill"></div>
@@ -624,7 +625,7 @@ var CONFIG = {
   </div>
   <p class="cta-headline">Pronto para dar o próximo passo?</p>
   <p class="cta-sub-text">Você acaba de conhecer uma nova forma de enxergar seu trabalho. Garanta seu acesso agora.</p>
-  <a id="btn-main" class="btn-primary" href="#" target="_blank" rel="noopener">
+  <a id="btn-main" class="btn-primary" href="https://pay.kiwify.com.br/OnTlY8O" target="_blank" rel="noopener">
     Garantir Meu Acesso Agora
   </a>
   <div class="btn-caption">
@@ -666,7 +667,7 @@ var CONFIG = {
 <section id="fcta">
   <p class="fcta-eyebrow">Você chegou ao final</p>
   <h3>Agora leve esse conhecimento para a sua prática.</h3>
-  <a id="btn-final" class="btn-primary-light" href="#" target="_blank" rel="noopener">
+  <a id="btn-final" class="btn-primary-light" href="https://pay.kiwify.com.br/OnTlY8O" target="_blank" rel="noopener">
     Garantir Meu Acesso Agora
   </a>
   <p class="fcta-caption">Acesso seguro e imediato</p>
@@ -684,7 +685,7 @@ var CONFIG = {
     <p class="sbar-title">Seu acesso está liberado</p>
     <p class="sbar-sub">Clique para garantir agora</p>
   </div>
-  <a id="btn-sbar" class="btn-sbar" href="#" target="_blank" rel="noopener">
+  <a id="btn-sbar" class="btn-sbar" href="https://pay.kiwify.com.br/OnTlY8O" target="_blank" rel="noopener">
     Garantir Meu Acesso
   </a>
 </div>
@@ -713,19 +714,26 @@ document.addEventListener("DOMContentLoaded", function () {
   trackEvent("page_view");
 
   // Vimeo src
-  document.getElementById("vplayer").src =
-    "https://player.vimeo.com/video/" + CONFIG.VIMEO_ID +
-    "?api=1&title=0&byline=0&portrait=0&color=3d1816&dnt=1";
+  var vplayer = document.getElementById("vimeo-player");
+  if (vplayer) {
+    vplayer.src =
+      "https://player.vimeo.com/video/" + CONFIG.VIMEO_ID +
+      "?api=1&title=0&byline=0&portrait=0&color=3d1816&dnt=1";
+  }
 
   // CTA links
   var kiwify = CONFIG.KIWIFY_URL;
-  document.getElementById("btn-main").href  = kiwify;
-  document.getElementById("btn-final").href = kiwify;
-  document.getElementById("btn-sbar").href  = kiwify;
+  var btnMain  = document.getElementById("btn-main");
+  var btnFinal = document.getElementById("btn-final");
+  var btnSbar  = document.getElementById("btn-sbar");
+  if (btnMain)  btnMain.href  = kiwify;
+  if (btnFinal) btnFinal.href = kiwify;
+  if (btnSbar)  btnSbar.href  = kiwify;
 
   // Track checkout clicks
   ["btn-main", "btn-final", "btn-sbar"].forEach(function (id) {
-    document.getElementById(id).addEventListener("click", function () {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener("click", function () {
       trackEvent("checkout_clicked");
     });
   });
@@ -748,7 +756,7 @@ function initPlayer() {
   var poll = setInterval(function () {
     if (typeof Vimeo !== "undefined") {
       clearInterval(poll);
-      var player = new Vimeo.Player(document.getElementById("vplayer"));
+      var player = new Vimeo.Player(document.getElementById("vimeo-player"));
 
       player.on("play", function () {
         if (!_started) {
