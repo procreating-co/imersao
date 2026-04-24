@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Imersão Saúde das Unhas · Thamires Ficagna</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💅🏽</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💅🏻</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -37,17 +37,16 @@ body {
 }
 
 /* ── ANIMATIONS ── */
-@keyframes fadeInUp  { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeIn    { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeOut   { from { opacity:1; } to { opacity:0; } }
-@keyframes slideInRight { from { opacity:0; transform:translateX(32px); } to { opacity:1; transform:translateX(0); } }
-@keyframes ctaPulse  { 0%,100% { box-shadow:0 4px 24px rgba(61,24,22,.32); } 50% { box-shadow:0 4px 40px rgba(61,24,22,.52),0 0 0 8px rgba(61,24,22,.06); } }
-@keyframes dotBlink  { 0%,100% { opacity:1; } 50% { opacity:.4; } }
-@keyframes dotPulse  { 0% { box-shadow:0 0 0 0 rgba(91,171,125,.7); } 70% { box-shadow:0 0 0 6px rgba(91,171,125,0); } 100% { box-shadow:0 0 0 0 rgba(91,171,125,0); } }
-@keyframes shimmer   { 0% { left:-100%; } 50% { left:160%; } 100% { left:160%; } }
-@keyframes spIn      { from { opacity:0; transform:translateX(-18px); } to { opacity:1; transform:translateX(0); } }
-@keyframes spOut     { from { opacity:1; transform:translateX(0); } to { opacity:0; transform:translateX(-18px); } }
-@keyframes praticaIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeInUp    { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn      { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeOut     { from { opacity:1; } to { opacity:0; } }
+@keyframes slideInRight{ from { opacity:0; transform:translateX(32px); } to { opacity:1; transform:translateX(0); } }
+@keyframes ctaPulse    { 0%,100% { box-shadow:0 4px 24px rgba(61,24,22,.32); } 50% { box-shadow:0 4px 40px rgba(61,24,22,.52),0 0 0 8px rgba(61,24,22,.06); } }
+@keyframes dotBlink    { 0%,100% { opacity:1; } 50% { opacity:.4; } }
+@keyframes dotPulse    { 0% { box-shadow:0 0 0 0 rgba(91,171,125,.7); } 70% { box-shadow:0 0 0 6px rgba(91,171,125,0); } 100% { box-shadow:0 0 0 0 rgba(91,171,125,0); } }
+@keyframes shimmer     { 0% { left:-100%; } 50% { left:160%; } 100% { left:160%; } }
+@keyframes praticaIn   { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes loadPulse   { 0%,100% { opacity:.4; } 50% { opacity:1; } }
 
 .fu { animation: fadeInUp .75s ease both; }
 .fi { animation: fadeIn   .75s ease both; }
@@ -118,53 +117,52 @@ body {
   margin: 0 auto;
   padding: clamp(14px,2vw,24px) 24px 0;
 }
-.vid-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 8px;
-}
-.vid-label-top {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  text-align: left;
-}
-.live-indicators {
+
+/* ── VIDEO META BAR ── */
+.vid-meta-bar { margin-bottom: 10px; }
+.vmb-row1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 6px 12px;
-  margin-bottom: 10px;
+  gap: 4px 12px;
+  margin-bottom: 5px;
 }
-.viewers-wrap {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 12.5px;
+.vmb-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
   color: var(--text-muted);
 }
-.viewers-wrap .vdot {
-  width: 7px; height: 7px;
+.vmb-viewers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+.vmb-viewers .vdot {
+  width: 6px; height: 6px;
   border-radius: 50%;
   background: #5BAB7D;
   flex-shrink: 0;
   animation: dotPulse 2s ease infinite;
 }
-.viewers-wrap strong { color: var(--text); font-weight: 600; }
-.urgency-text {
-  font-family: 'Outfit', sans-serif;
-  font-size: 11.5px;
-  font-weight: 500;
+.vmb-urgency {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
   color: var(--brown-mid);
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  opacity: .7;
 }
 
 /* ── VIDEO WRAPPER ── */
@@ -184,8 +182,7 @@ body {
 
 /* ── VIDEO OVERLAY SYSTEM ── */
 #vid-overlay {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   z-index: 10;
   pointer-events: none;
 }
@@ -195,6 +192,43 @@ body {
   pointer-events: auto;
   cursor: pointer;
 }
+
+/* Loading overlay */
+#loading-overlay {
+  position: absolute; inset: 0;
+  z-index: 22;
+  background: rgba(13,5,5,.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  pointer-events: none;
+  transition: opacity .45s ease;
+}
+#loading-overlay.hidden { opacity: 0; }
+.loading-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.42);
+  animation: loadPulse 1.8s ease infinite;
+}
+.loading-dots {
+  display: flex;
+  gap: 5px;
+}
+.loading-dots span {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.3);
+  animation: loadPulse 1.4s ease infinite;
+}
+.loading-dots span:nth-child(2) { animation-delay: .2s; }
+.loading-dots span:nth-child(3) { animation-delay: .4s; }
+
 /* Unmute overlay */
 #unmute-overlay {
   position: absolute; inset: 0;
@@ -228,6 +262,7 @@ body {
   text-transform: uppercase;
   color: rgba(255,255,255,.82);
 }
+
 /* Pratica toast */
 #pratica-toast-vid {
   position: absolute;
@@ -260,6 +295,7 @@ body {
   text-transform: uppercase;
   color: rgba(255,255,255,.88);
 }
+
 /* Custom controls bar */
 #custom-controls {
   position: absolute;
@@ -308,6 +344,7 @@ body {
 }
 .speed-btn:hover { background: rgba(255,255,255,.1); color: rgba(255,255,255,.9); }
 .speed-btn.active { background: var(--brown); border-color: var(--brown); color: #fff; }
+
 /* Netflix countdown overlay */
 #netflix-overlay {
   position: absolute; inset: 0;
@@ -323,7 +360,6 @@ body {
 }
 #netflix-overlay.on { display: flex; pointer-events: auto; animation: fadeIn .5s ease both; }
 .netflix-ring-wrap { position: relative; width: 84px; height: 84px; }
-#countdown-svg { width: 84px; height: 84px; }
 .netflix-text {
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
@@ -335,7 +371,7 @@ body {
   line-height: 1.6;
 }
 
-/* ── CTA SECTION ── */
+/* ── CTA SECTION (hidden until 13 min) ── */
 #cta {
   max-width: 680px;
   margin: 0 auto;
@@ -431,7 +467,7 @@ body {
 }
 .btn-caption svg { flex-shrink: 0; }
 
-/* ── STICKY BAR ── */
+/* ── STICKY BAR (hidden until 13 min) ── */
 #sticky-bar {
   position: fixed;
   bottom: 0; left: 0; right: 0;
@@ -490,46 +526,49 @@ body.bar-open { padding-bottom: 72px; }
 .toast-title { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700; color:var(--brown); margin-bottom:4px; }
 .toast-body  { font-size:12px; color:var(--text-muted); line-height:1.5; }
 
-/* ── SOCIAL PROOF ── */
+/* ── SOCIAL PROOF (Netflix-style) ── */
 #sp-container {
   position: fixed;
-  bottom: 16px;
-  left: 16px;
+  bottom: 20px;
+  left: 20px;
   z-index: 9990;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   pointer-events: none;
   transition: bottom .35s;
-  max-width: 280px;
+  max-width: 300px;
 }
-#sp-container.bar-open { bottom: 88px; }
+#sp-container.bar-open { bottom: 92px; }
 .sp-card {
-  background: var(--brown);
+  background: rgba(22,10,10,.95);
+  border: 1px solid rgba(255,255,255,.06);
   border-radius: 6px;
-  padding: 10px 13px;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
-  gap: 9px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.22);
+  gap: 10px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.32), 0 1px 0 rgba(255,255,255,.04);
   opacity: 0;
-  transform: translateX(-18px);
-  transition: opacity .35s ease, transform .35s ease;
+  transform: translateX(-22px) translateY(8px);
+  transition: opacity .38s ease, transform .38s ease;
 }
-.sp-card.sp-in { opacity:1; transform:translateX(0); }
-.sp-card.sp-out { opacity:0; transform:translateX(-18px); }
+.sp-card.sp-in  { opacity:1; transform:translateX(0) translateY(0); }
+.sp-card.sp-out { opacity:0; transform:translateX(-22px) translateY(4px); }
 .sp-avatar {
-  width: 28px; height: 28px;
+  width: 30px; height: 30px;
   border-radius: 50%;
-  background: rgba(255,255,255,.14);
+  background: rgba(253,248,245,.08);
+  border: 1px solid rgba(255,255,255,.1);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 13px;
+  font-size: 14px;
 }
-.sp-msg { font-family:'Outfit',sans-serif; font-size:11.5px; color:rgba(255,255,255,.88); line-height:1.4; }
-.sp-msg strong { font-weight:600; color:#fff; display:block; font-size:12px; }
+.sp-info { display: flex; flex-direction: column; gap: 1px; }
+.sp-name { font-family:'Montserrat',sans-serif; font-size:11.5px; font-weight:700; color:#fff; letter-spacing:-.01em; }
+.sp-action { font-family:'Outfit',sans-serif; font-size:11px; color:rgba(255,255,255,.52); line-height:1.3; }
 
 /* ── DIVIDER ── */
 .section-divider { display:flex; align-items:center; gap:16px; max-width:120px; margin:0 auto clamp(48px,7vw,80px); }
@@ -546,7 +585,7 @@ body.bar-open { padding-bottom: 72px; }
 .rico { width:32px; height:32px; border-radius:50%; background:rgba(61,24,22,.07); display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; margin-top:1px; }
 .rtext { font-size:clamp(13px,1.9vw,15px); color:var(--text-mid); line-height:1.65; }
 
-/* ── FINAL CTA ── */
+/* ── FINAL CTA (hidden until 13 min) ── */
 #fcta { background:var(--brown); padding:clamp(64px,9vw,108px) 24px; text-align:center; display:none; }
 #fcta.on { display:block; animation:fadeIn .8s ease both; }
 .fcta-eyebrow { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:16px; }
@@ -575,9 +614,9 @@ footer small { display:block; font-size:10px; color:rgba(107,48,48,.3); margin-t
   .btn-sbar { text-align:center; padding:14px; }
   .sbar-title, .sbar-sub { white-space:normal; }
   #toast { top:auto; bottom:90px; right:12px; left:12px; max-width:100%; }
-  #sp-container { max-width:calc(100vw - 32px); }
-  .live-indicators { flex-direction:column; align-items:flex-start; gap:4px; }
+  #sp-container { max-width:calc(100vw - 40px); }
   .speed-btn { font-size:8px; padding:3px 5px; }
+  .vmb-row1 { flex-direction:column; align-items:flex-start; gap:3px; }
 }
 </style>
 </head>
@@ -588,10 +627,10 @@ footer small { display:block; font-size:10px; color:rgba(107,48,48,.3); margin-t
 var CONFIG = {
   VIMEO_ID:                   "1186334647",
   KIWIFY_URL:                 "https://pay.kiwify.com.br/OnTlY8O",
-  CTA_REVEAL_SECONDS:         930,
+  CTA_REVEAL_SECONDS:         780,
   SOCIAL_PROOF_START_SECONDS: 780,
   FINAL_REDIRECT_SECONDS:     10,
-  STORAGE_KEY:                "imersao_sdu_v5"
+  STORAGE_KEY:                "imersao_sdu_v6"
 };
 </script>
 
@@ -614,16 +653,21 @@ var CONFIG = {
 
 <!-- ── VÍDEO ── -->
 <section id="vid" class="fi d2">
-  <div class="vid-header">
-    <p class="vid-label-top">Imersão Saúde das Unhas · Thamires Ficagna</p>
-  </div>
-  <div class="live-indicators">
-    <div class="viewers-wrap">
-      <span class="vdot"></span>
-      <span><strong id="viewer-count">109</strong> pessoas assistindo agora</span>
+
+  <!-- Meta bar acima do vídeo -->
+  <div class="vid-meta-bar">
+    <div class="vmb-row1">
+      <span class="vmb-title">Imersão Saúde das Unhas com Thamires Ficagna</span>
+      <span class="vmb-viewers">
+        <span class="vdot"></span>
+        <span id="viewer-count">109</span> pessoas assistindo agora
+      </span>
     </div>
-    <div class="urgency-text">⏰ Essa aula ficará disponível apenas até domingo!</div>
+    <div>
+      <span class="vmb-urgency">Disponível apenas até domingo</span>
+    </div>
   </div>
+
   <div class="vwrap" id="vwrap">
     <div class="vaspect">
       <iframe
@@ -638,7 +682,15 @@ var CONFIG = {
         <!-- Play/pause click area -->
         <div id="click-capture"></div>
 
-        <!-- Unmute prompt -->
+        <!-- Loading overlay -->
+        <div id="loading-overlay">
+          <div class="loading-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <p class="loading-text">Conectando...</p>
+        </div>
+
+        <!-- Unmute prompt (shown after loading hides) -->
         <div id="unmute-overlay">
           <div class="unmute-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -684,7 +736,7 @@ var CONFIG = {
         <!-- Netflix countdown overlay -->
         <div id="netflix-overlay">
           <div class="netflix-ring-wrap">
-            <svg id="countdown-svg" viewBox="0 0 84 84">
+            <svg viewBox="0 0 84 84" width="84" height="84">
               <circle cx="42" cy="42" r="38" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="3.5"/>
               <circle id="countdown-ring-progress" cx="42" cy="42" r="38"
                 fill="none" stroke="rgba(253,248,245,.85)" stroke-width="3.5"
@@ -702,7 +754,7 @@ var CONFIG = {
   </div><!-- .vwrap -->
 </section>
 
-<!-- ── CTA INLINE ── -->
+<!-- ── CTA INLINE (oculto até 13 min) ── -->
 <section id="cta">
   <p class="cta-main-headline">Acesso Liberado para o Curso Completo.</p>
   <div class="cta-badge">
@@ -747,7 +799,7 @@ var CONFIG = {
   </div>
 </section>
 
-<!-- ── FINAL CTA ── -->
+<!-- ── FINAL CTA (oculto até 13 min) ── -->
 <section id="fcta">
   <p class="fcta-eyebrow">Você chegou ao final</p>
   <h3>Agora leve esse conhecimento para a sua prática.</h3>
@@ -763,7 +815,7 @@ var CONFIG = {
   <small>Página exclusiva para alunas inscritas</small>
 </footer>
 
-<!-- ── STICKY BAR ── -->
+<!-- ── STICKY BAR (oculta até 13 min) ── -->
 <div id="sticky-bar">
   <div class="sbar-text">
     <p class="sbar-title">Seu acesso está liberado</p>
@@ -780,7 +832,7 @@ var CONFIG = {
   <p class="toast-body">Role a página para garantir seu acesso.</p>
 </div>
 
-<!-- ── SOCIAL PROOF CONTAINER ── -->
+<!-- ── SOCIAL PROOF ── -->
 <div id="sp-container"></div>
 
 <!-- ── SDK ── -->
@@ -805,6 +857,17 @@ function initViewerCount() {
   setTimeout(update, 20000 + Math.random() * 15000);
 }
 
+/* ── LOADING OVERLAY ── */
+var _loadingHidden = false;
+function hideLoading() {
+  if (_loadingHidden) return;
+  _loadingHidden = true;
+  var lo = document.getElementById("loading-overlay");
+  if (!lo) return;
+  lo.classList.add("hidden");
+  setTimeout(function() { lo.style.display = "none"; }, 480);
+}
+
 /* ── SOCIAL PROOF ── */
 var SP_NAMES = [
   "@mari_ju.nails","@marianarosa.beauty","@luizafreitas.studio",
@@ -817,7 +880,6 @@ var SP_NAMES = [
 var _spEnabled  = false;
 var _spIndex    = 0;
 var _spShuffled = [];
-var _spTimeout  = null;
 var _curTime    = 0;
 var _duration   = 0;
 
@@ -838,11 +900,12 @@ function enableSocialProof() {
   if (_spEnabled) return;
   _spEnabled = true;
   _spShuffled = shuffleArr(SP_NAMES);
+  _spIndex = 0;
   scheduleSp();
 }
 function scheduleSp() {
   if (!_spEnabled) return;
-  _spTimeout = setTimeout(function() {
+  setTimeout(function() {
     showSpCard();
     scheduleSp();
   }, getSpDelay());
@@ -856,7 +919,10 @@ function showSpCard() {
   card.className = "sp-card";
   card.innerHTML =
     '<div class="sp-avatar">💅</div>' +
-    '<div class="sp-msg"><strong>' + name + '</strong>acabou de garantir acesso completo</div>';
+    '<div class="sp-info">' +
+      '<span class="sp-name">' + name + '</span>' +
+      '<span class="sp-action">acabou de garantir acesso completo</span>' +
+    '</div>';
   cont.appendChild(card);
   requestAnimationFrame(function() {
     requestAnimationFrame(function() { card.classList.add("sp-in"); });
@@ -864,15 +930,15 @@ function showSpCard() {
   setTimeout(function() {
     card.classList.remove("sp-in");
     card.classList.add("sp-out");
-    setTimeout(function() { if (card.parentNode) card.parentNode.removeChild(card); }, 380);
-  }, 5200);
+    setTimeout(function() { if (card.parentNode) card.parentNode.removeChild(card); }, 420);
+  }, 5500);
 }
 
 /* ── NETFLIX COUNTDOWN ── */
 var _netflixStarted = false;
 var _netflixRaf     = null;
 var _netflixTs      = null;
-var CIRC = 2 * Math.PI * 38; // r=38 → 238.76
+var CIRC = 2 * Math.PI * 38; // 238.76
 
 function startNetflixCountdown() {
   if (_netflixStarted) return;
@@ -896,11 +962,11 @@ function startNetflixCountdown() {
   _netflixRaf = requestAnimationFrame(tick);
 }
 function doRedirect() {
-  try { window.location.href = CONFIG.KIWIFY_URL; } catch(e) {}
+  window.location.href = CONFIG.KIWIFY_URL;
   setTimeout(function() {
     var fcta = document.getElementById("fcta");
     if (fcta) fcta.classList.add("on");
-  }, 700);
+  }, 800);
 }
 
 /* ── PRATICA TOAST (5s) ── */
@@ -915,7 +981,7 @@ function showPraticaToast() {
     setTimeout(function() {
       el.style.display = "none";
       el.style.animation = "";
-    }, 420);
+    }, 430);
   }, 7500);
 }
 
@@ -948,11 +1014,13 @@ function initPlayer() {
       _player.getDuration().then(function(d) { if (d) _duration = d; }).catch(function(){});
       _player.on("loaded", function() {
         _player.getDuration().then(function(d) { if (d) _duration = d; }).catch(function(){});
+        hideLoading();
       });
 
       _player.on("play", function() {
         _isPlaying = true;
         updatePlayIcon();
+        hideLoading();
         if (!_started) { _started = true; trackEvent("video_started"); }
       });
       _player.on("pause", function() { _isPlaying = false; updatePlayIcon(); });
@@ -961,7 +1029,7 @@ function initPlayer() {
         var t = data.seconds;
         _curTime = t;
 
-        // Seek prevention
+        // Seek prevention — block forward jumps
         if (!_seeking && t > _maxTime + 2.5) {
           _seeking = true;
           _player.setCurrentTime(_maxTime).then(function() { _seeking = false; }).catch(function() { _seeking = false; });
@@ -978,10 +1046,11 @@ function initPlayer() {
         // Toast at 5s
         if (t >= 5 && !_shown5s) { _shown5s = true; showPraticaToast(); }
 
-        // CTA at 15:30
-        if (t >= CONFIG.CTA_REVEAL_SECONDS && !_ctaShown) { _ctaShown = true; revealCTA(true); }
-
-        // Social proof after 13:00
+        // CTA + social proof at 13:00 (780s)
+        if (t >= CONFIG.CTA_REVEAL_SECONDS && !_ctaShown) {
+          _ctaShown = true;
+          revealCTA(true);
+        }
         if (t >= CONFIG.SOCIAL_PROOF_START_SECONDS) enableSocialProof();
 
         // Netflix countdown (last N seconds)
@@ -996,7 +1065,10 @@ function initPlayer() {
         if (!_netflixStarted) doRedirect();
       });
 
-    } else if (++tries > 50) clearInterval(poll);
+    } else if (++tries > 50) {
+      clearInterval(poll);
+      hideLoading();
+    }
   }, 300);
 }
 
@@ -1054,7 +1126,6 @@ function initControls() {
     });
   }
 
-  // Show controls on mobile touch
   var vwEl = document.getElementById("vwrap");
   if (vwEl) {
     var _touchTimer = null;
@@ -1066,9 +1137,8 @@ function initControls() {
   }
 }
 
-/* ── REVEAL CTA ── */
+/* ── REVEAL CTA (only via timeupdate at 780s) ── */
 function revealCTA(animate) {
-  localStorage.setItem(CONFIG.STORAGE_KEY, "1");
   var ctaEl  = document.getElementById("cta");
   var fctaEl = document.getElementById("fcta");
   var sbar   = document.getElementById("sticky-bar");
@@ -1081,10 +1151,14 @@ function revealCTA(animate) {
   if (animate) {
     var toast = document.getElementById("toast");
     if (toast) {
+      toast.style.animation = "slideInRight .5s ease both";
       toast.classList.add("on");
       setTimeout(function() {
         toast.style.animation = "fadeOut .4s ease forwards";
-        setTimeout(function() { toast.classList.remove("on"); toast.style.animation = ""; }, 420);
+        setTimeout(function() {
+          toast.classList.remove("on");
+          toast.style.animation = "";
+        }, 420);
       }, 4000);
     }
     setTimeout(function() {
@@ -1120,7 +1194,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  if (localStorage.getItem(CONFIG.STORAGE_KEY) === "1") revealCTA(false);
+  // NOTE: localStorage is intentionally NOT used to restore CTA state.
+  // CTA only appears after 780s of actual watch time.
 
   initViewerCount();
   initPlayer();
